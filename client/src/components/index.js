@@ -8,15 +8,14 @@ import Archive from './Archive';
 import Modal from './Modal';
 import Welcome from './Welcome';
 
-// this makes it so I just reference one file to find all the components
 export {
   About,
   Contact,
   Form,
   Game,
   GamesListManager,
+  Home,
   Archive,
   Modal,
-  Home,
   Welcome
 };

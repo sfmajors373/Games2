@@ -5,9 +5,9 @@ export default class Game extends PureComponent {
   render () {
     const { _id, i, name, description, picture, toggleModal, deleteGame } = this.props;
     return (
-      <div className="col=md-4">
+      <div className="col-md-4">
         <div className="thumbnail">
-          <div className="thumbnail=frame">
+          <div className="thumbnail-frame">
             <img src={picture} alt="..." className="img-responsive thumbnail-pic" />
           </div>
           <div className="caption">

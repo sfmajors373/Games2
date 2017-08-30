@@ -6,6 +6,7 @@ export default class GamesListManager extends PureComponent {
   render () {
     const { games, searchBar, setSearchBar, toggleModal, deleteGame } = this.props;
     return (
+
       <div className="container scrollable">
         <div className="row text-left">
           <Link to="/games/add" className="btn btn-danger">Add a new Game!</Link>
@@ -15,12 +16,12 @@ export default class GamesListManager extends PureComponent {
             type="search" placeholder="Search by Name" className="form-control search-bar" onKeyUp={setSearchBar} />
         </div>
         <div className="row">
-        { // a game is only shown if its name contains search string
+        {
           games
             .filter(game => game.name.toLowerCase().includes(searchBar))
             .map((game, i) => {
               return (
-                <Game {...game}
+                <Game  {...game}
                   key={game._id}
                   i={i}
                   toggleModal={toggleModal}
@@ -32,6 +33,7 @@ export default class GamesListManager extends PureComponent {
         </div>
         <hr />
       </div>
+
     );
   }
 }

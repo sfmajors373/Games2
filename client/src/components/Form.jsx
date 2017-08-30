@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router';
+import { Field, reduxForm } from 'redux-form/immutable';
 
-export default class Form extends PureComponent {
+class Form extends PureComponent {
   render () {
     return (
       <div className="row scrollable">
@@ -17,18 +18,26 @@ export default class Form extends PureComponent {
             </div>
             <div className="panel-body">
               <form name="product-form" action="" onSubmit={() => this.props.submit()} noValidate>
-              <div className="form-group text-left">
-                <label htmlFor="caption">Name</label>
-                <input id="name" type="text" className="form-control" placeholder="Enter the title" onChange={() => this.props.setGame()} />
-              </div>
-              <div className="form-group text-left">
-                <label htmlFor="description">Description</label>
-                <textarea id="description" type="text" className="form-control" placeholder="Enter the description" rows="5" onChange={() => this.props.setGame()} ></textarea>
-              </div>
-              <div className="form-group text-left">
-                <label htmlFor="price">Year</label>
-                <input id="year" type="number" className="form-control" placeholder="Enter the year" onChange={() => this.props.setGame()} />
-              </div>
+                <div className="form-group text-left">
+                  <label htmlFor="caption">Name</label>
+                  <Field
+                    name="description"
+                    component="textarea"
+                    className="form-control"
+                    placeholder="Enter the description"
+                    rows="5"
+                  />
+                </div>
+                <div className="form-group text-left">
+                  <label htmlFor="price">Year</label>
+                  <Field
+                    name="year"
+                    component="input"
+                    type="number"
+                    className="form-control"
+                    placeholder="Enter the year"
+                  />
+                </div>
               <div className="form-group text-left">
                 <label htmlFor="picture">Picture</label>
                   <div className="text-center dropup">
@@ -49,3 +58,6 @@ export default class Form extends PureComponent {
     );
   }
 }
+
+// form is named game so it can be accessed like form.game
+export default reduxForm({ form: 'game' })(Form);

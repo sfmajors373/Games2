@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import Immutable from 'immutable';
+import * as gamesActionCreators from '../actions/games';
 import { Modal, GamesListManager } from '../components';
 
-export default class GamesContainer extends Component {
+class GamesContainer extends Component {
   constructor (props) {
     super(props);
-    // initial state
-    this.sate = {
-      games: [],
-      selectedGame: {},
-      searchBar: ''
-    };
-    // binding function to this
     this.toggleModal = this.toggleModal.bind(this);
     this.deleteGame = this.deleteGame.bind(this);
-    this.setSearchBar = this.setSearch.bind(this);
+    this.setSearchBar = this.setSearchBar.bind(this);
   }
 
   componentDidMount () {
@@ -21,40 +18,26 @@ export default class GamesContainer extends Component {
   }
 
   toggleModal (index) {
-    this.setState({ selectedGame: this.state.games[index] });
-    $('#game-modal').modal(); // <-- utilizing bootstrap
+    this.props.gamesActions.showSelectedGame(this.props.games[index]);
+    $('#game-modal').modal();
   }
 
   getGames () {
-    fetch('http://localhost:8080/games', {
-      headers: new Headers({
-        'Content-Type': 'application/json'
-      })
-    })
-    .then(response => response.json())
-    .then(data => this.setState({ games: data }));
+    this.props.gamesActions.getGames();
   }
 
   deleteGame (id) {
-    fetch(`'http://localhost:8080/games/${id}'`, { // <--- this keeps commenting itself out but I need the object literal thing
-      headers: new Headers({
-        'Content-Type': 'application/json',
-      }),
-      method: 'DELETE',
-    })
-    .then(response => response.json())
-    .then(response => {
-      this.setState({ games: this.state.games.filter(game => game._id !== id });
-      console.log(response.message);
-    });
+    this.props.gamesActions.deleteGame(id);
   }
 
   setSearchBar (event) {
-    this.setState({ searchBar: event.target.value.toLowerCase() });
+    this.props.gamesActions.setSearchBar(event.target.value.toLowerCase());
   }
 
   render () {
-    const { games, selectedGame, searchBar } = this.state;
+    const { selectedGame } = this.state;
+    const { games, searchBar } = this.props;
+    console.log(games);
     return (
       <div>
         <Modal game={selectedGame} />
@@ -67,5 +50,20 @@ export default class GamesContainer extends Component {
         />
       </div>
     );
+  }
+}
+
+function mapStateToProps (state) {
+  return {
+    games: state.getIn(['games', 'list'], Immutable.List()).toJS(),
+    searchBar: state.getIn(['games', 'searchBar'], ''),
+    selectedGame: state.getIn(['games', 'selectedGame'], Immutable.List()).toJS()
+  }
+}
+function mapDispatchToProps (dispatch) {
+  return {
+    gamesActions: bindActionCreators(gamesActionCreators, dispatch)
   };
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(GamesContainer);

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { Link } from 'react-router';
 
 export default class Layout extends PureComponent {
-  render() {
+  render () {
     return (
       <div className="view">
         <nav className="navbar navbar-inverse">
@@ -15,14 +15,14 @@ export default class Layout extends PureComponent {
                 <span className="icon-bar" />
               </button>
               <Link className="navbar-brand" to="/">
-                <img src="https://cdn.filestackcontent.com/nLnmrZQaRpeythR4ezUo" className="header-logo" />
+                <img src="https://cdn.filestackcontent.com/haOEMG05TluD4u8SEIcm" className="header-logo" />
               </Link>
             </div>
           </div>
         </nav>
         {this.props.children}
         <footer className="text-center">
-          <p>2017 original design and tutorial by Samuele Zaza recreation by Sarah</p>
+          <p>© 2016 Samuele Zaza</p>
         </footer>
       </div>
     );
