@@ -165,7 +165,7 @@ body {
 /* custom */
 @font-face {
   font-family: PressStartFont;
-  src: url(../fonts/PressStart2P.ttf);
+  /*src: url(../fonts/PressStart2P.ttf);*/
 }
 body {
   font-family: PressStartFont;

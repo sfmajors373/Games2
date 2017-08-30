@@ -3,7 +3,7 @@
 const merge = require('webpack-merge');
 
 const PATHS = require('./webpack-paths');
-const loaders = rerquire('./webpack-loaders');
+const loaders = require('./webpack-loaders');
 
 const common = {
   entry: {
@@ -27,7 +27,7 @@ const common = {
 
 let config;
 // switch defines the different configuration as development rerquires webpack-dev-server
-switch(provess.env.NODE_ENV) {
+switch(process.env.NODE_ENV) {
   case 'build':
     config = merge(
       common,
