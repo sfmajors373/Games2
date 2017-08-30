@@ -7,7 +7,7 @@ export default class Form extends PureComponent {
       <div className="row scrollable">
         <div className="col-md-offset-2 col-md-8">
           <div className="text-left">
-            <Link to"/games" className="btn btn-info">Back</Link>
+            <Link to="/games" className="btn btn-info">Back</Link>
           </div>
           <div className="panel panel-default">
             <div className="panel-heading">

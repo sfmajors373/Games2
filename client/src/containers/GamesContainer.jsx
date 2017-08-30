@@ -26,7 +26,7 @@ export default class GamesContainer extends Component {
   }
 
   getGames () {
-    fetch('http://localhost:3030/games', {
+    fetch('http://localhost:8080/games', {
       headers: new Headers({
         'Content-Type': 'application/json'
       })
@@ -36,7 +36,7 @@ export default class GamesContainer extends Component {
   }
 
   deleteGame (id) {
-    fetch(`'http://localhost:3030/games/${id}'`, { // <--- this keeps commenting itself out but I need the object literal thing
+    fetch(`'http://localhost:8080/games/${id}'`, { // <--- this keeps commenting itself out but I need the object literal thing
       headers: new Headers({
         'Content-Type': 'application/json',
       }),

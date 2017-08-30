@@ -1,4 +1,4 @@
-mport React, { PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import { Link } from 'react-router';
 import Game from './Game';
 

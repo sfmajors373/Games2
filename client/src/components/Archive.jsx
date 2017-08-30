@@ -5,7 +5,7 @@ export default class Layout extends PureComponent {
   render() {
     return (
       <div className="view">
-        <div className="navbar navbar-inverse">
+        <nav className="navbar navbar-inverse">
           <div className="container">
             <div className="navbar-header">
               <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -22,7 +22,7 @@ export default class Layout extends PureComponent {
         </nav>
         {this.props.children}
         <footer className="text-center">
-          <p>2017 Designed by Samuele Zaza added to by Sarah</p>
+          <p>2017 original design and tutorial by Samuele Zaza recreation by Sarah</p>
         </footer>
       </div>
     );
